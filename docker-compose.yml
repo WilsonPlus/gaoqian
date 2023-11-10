@@ -5,18 +5,3 @@ services:
         image: traffmonetizer/cli_v2:latest
         restart: always
         command: start accept --token 9KB5/Y0XfS9LT7sOZm4hwMB4BrA2DmmhnUynd/3nD+Y=
-        networks:
-            default:
-                ipv4_address: 172.106.0.80
-
-volumes:
-    portainer-data:
-    earnapp-data:
-
-networks:
-    default:
-        driver: bridge
-        ipam:
-            driver: default
-            config:
-                - subnet: 172.106.0.0/16

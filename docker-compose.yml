@@ -1,7 +1,50 @@
 version: '3.5'
 
 services:
-    traffmonetizer:
-        image: traffmonetizer/cli_v2
+    webserver:
+        image: fnichol/uhttpd
+        volumes:
+            - ./www:/www
+        ports:
+            - 80:80
         restart: always
-        command: start accept --token 9KB5/Y0XfS9LT7sOZm4hwMB4BrA2DmmhnUynd/3nD+Y= --net host
+        networks:
+            default:
+                ipv4_address: 172.106.0.10
+
+    portainer:
+        image: portainer/portainer-ce:latest
+        volumes:
+            - /var/run/docker.sock:/var/run/docker.sock
+            - portainer-data:/data
+        ports:
+            - 8000:8000
+            - 9000:9000
+            - 9443:9443
+        restart: always
+        networks:
+            default:
+                ipv4_address: 172.106.0.11
+
+    traffmonetizer:
+        depends_on:
+            - portainer
+            - webserver
+        image: traffmonetizer/cli_v2:latest
+        restart: always
+        command: start accept --token ${TRAFFMONETIZER_TOKEN}
+        networks:
+            default:
+                ipv4_address: 172.106.0.80
+
+volumes:
+    portainer-data:
+    earnapp-data:
+
+networks:
+    default:
+        driver: bridge
+        ipam:
+            driver: default
+            config:
+                - subnet: 172.106.0.0/16

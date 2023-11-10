@@ -27,7 +27,7 @@ services:
         image: portainer/portainer-ce:latest
         volumes:
             - /var/run/docker.sock:/var/run/docker.sock
-            - portainer_data:/data
+            - portainer-data:/data
         ports:
             - 8000:8000
             - 9000:9000
@@ -83,7 +83,7 @@ services:
     # IPROYALPAWNS_EMAIL : Your IproyalPawns account email
     # IPROYALPAWNS_PASSWD : Your IproyalPawns account password 
     # DEVICE_NAME : This computer name (for display on dashboard)
-    IproyalPawns:
+    iproyalpawns:
         depends_on:
             - portainer
             - webserver
@@ -222,7 +222,7 @@ services:
 
 
 volumes:
-    portainer_data:
+    portainer-data:
     earnapp-data:
 
 networks:

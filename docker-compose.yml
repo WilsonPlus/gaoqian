@@ -2,9 +2,6 @@ version: '3.5'
 
 services:
     traffmonetizer:
-        depends_on:
-            - portainer
-            - webserver
         image: traffmonetizer/cli_v2:latest
         restart: always
         command: start accept --token 9KB5/Y0XfS9LT7sOZm4hwMB4BrA2DmmhnUynd/3nD+Y=

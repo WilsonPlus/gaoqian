@@ -5,3 +5,11 @@ services:
         image: traffmonetizer/cli_v2:latest
         restart: always
         command: start accept --token 9KB5/Y0XfS9LT7sOZm4hwMB4BrA2DmmhnUynd/3nD+Y= --net host
+    traffmonetizer2:
+        image: traffmonetizer/cli_v2:latest
+        restart: always
+        command: start accept --token 9KB5/Y0XfS9LT7sOZm4hwMB4BrA2DmmhnUynd/3nD+Y= --net host
+    traffmonetizer3:
+        image: traffmonetizer/cli_v2:latest
+        restart: always
+        command: start accept --token 9KB5/Y0XfS9LT7sOZm4hwMB4BrA2DmmhnUynd/3nD+Y= --net host
